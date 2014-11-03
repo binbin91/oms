@@ -2,10 +2,6 @@
 from sys import path
 if 'deploy' not in path:
     path.append(r'deploy')
-#if "/root/oms/deploy" not in path:
-#    path.append(r"/root/oms/deploy")
-#if "/root/oms" not in path:
-#    path.append(r"/root/oms")
 from saltapi import SaltAPI
 from oms import settings
 import threading
@@ -13,6 +9,9 @@ import threading
 asset_info = []
 
 def get_server_asset_info(tgt):
+    '''
+    Salt API得到资产信息，进行格式化输出
+    '''
     global asset_info
     info = []
     sapi = SaltAPI(url=settings.SALT_API['url'],username=settings.SALT_API['user'],password=settings.SALT_API['password'])
