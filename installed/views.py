@@ -92,7 +92,7 @@ def system_install(request):
     3.screen put in System Install process //这块信息暂且空着，日后有IPMI实践补上
     """
 
-    cobbler = CobblerAPI()    
+    cobbler = CobblerAPI(url=settings.Cobbler_API['url'],username=settings.Cobbler_API['user'],password=settings.Cobbler_API['password'])    
     if request.method == 'GET':
        ip = request.GET.get('ip')
        hostname = request.GET.get('host')

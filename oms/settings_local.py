@@ -3,6 +3,11 @@ SALT_API = {"url": "",
             "password": ""
             }
 
+Cobbler_API = {"url": "",
+            "user": "",
+            "password": ""
+            }
+
 # salt result
 RETURNS_MYSQL = {"host": "localhost",
                "port": 63306,

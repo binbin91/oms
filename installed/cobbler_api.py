@@ -8,10 +8,10 @@ import cobbler
 import xmlrpclib 
 
 class CobblerAPI(object):
-    def __init__(self):
-        self.cobbler_user="user"
-        self.cobbler_pass="passwd"
-        self.cobbler_url="url"
+    def __init__(self,url,user,password):
+        self.cobbler_user= user
+        self.cobbler_pass = password
+        self.cobbler_url = url
     
     def add_system(self,hostname,ip_add,mac_add,profile):
         '''
@@ -42,7 +42,7 @@ class CobblerAPI(object):
         return ret
 
 def main():
-    cobbler = CobblerAPI()
+    cobbler = CobblerAPI(url=,user,password,)
     ret = cobbler.add_system(hostname='test',ip_add='#',mac_add='#',profile='CentOS6.3-x86_64')
     print ret
 
