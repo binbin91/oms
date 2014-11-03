@@ -21,7 +21,7 @@ class SaltAPI(object):
         encode = urllib.urlencode(params)
         obj = urllib.unquote(encode)
         content = self.postRequest(obj,prefix='/login')
-	try:
+        try:
             self.__token_id = content['return'][0]['token']
         except KeyError:
             raise KeyError
