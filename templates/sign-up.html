@@ -1,0 +1,44 @@
+{% extends "index.html" %}    
+{% block title %}OMS{% endblock %}
+{% block container %}
+    <section id="login-container">
+
+        <div class="row">
+            <div class="col-md-3" id="login-wrapper">
+                <div class="panel panel-primary animated flipInY">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Sign Up
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Already a member?
+                            <a href="login.html">
+                                <strong>Sign In</strong>
+                            </a>
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Retype Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Retype your password">
+                            </div>
+
+                            <a href="index.html" class="btn btn-primary btn-block">Sign Up</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

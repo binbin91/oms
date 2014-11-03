@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block title %}登录OMS{% endblock %}
+{% block container %}
+    <section id="login-container">
+
+        <div class="row">
+            <div class="col-md-3" id="login-wrapper">
+                <div class="panel panel-primary animated flipInY">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Sign In
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Login to access your account.</p>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control" id="email" placeholder="Username">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <i class="fa fa-lock"></i>
+                                    <a href="javascript:void(0)" class="help-block">Forgot Your Password?</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <a href="login.html" class="btn btn-primary btn-block">Sign in</a>
+                                    <hr />
+                                    <a href="sign-up.html" class="btn btn-default btn-block">Not a member? Sign Up</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

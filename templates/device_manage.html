@@ -1,0 +1,88 @@
+{% extends "index.html" %}
+{% block content %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--breadcrumbs start -->
+                        <ul class="breadcrumb">
+                            <li><a href="{% url 'index' %}">Dashboard</a>
+                            </li>
+                            <li>资产管理</li>
+                            <li class="active">{{ page_name }}</li>
+                        </ul>
+                        <!--breadcrumbs end -->
+                        <h1 class="h1">{{ page_name }}</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal form-border" id="form" method="post" action=".">
+                                       {% csrf_token %}
+                                       <div class="form-group">
+                                             <label class="col-sm-3 control-label">IP地址</label>
+                                             <div class="col-sm-6">
+                                             {{ form.ip }}
+                                             {{ form.ip.errors }}
+                                             </div>
+                                       </div>
+                                       <div class="form-group">
+                                             <label class="col-sm-3 control-label">主机名</label>
+                                             <div class="col-sm-6">
+                                             {{ form.hostname }}
+                                             {{ form.hostname.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">厂商</label>
+                                             <div class="col-sm-6">
+                                             {{ form.manufacturer }}
+                                             {{ form.manufacturer.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">型号</label>
+                                             <div class="col-sm-6">
+                                             {{ form.productname }}
+					     {{ form.productname.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">机柜编号</label>
+                                             <div class="col-sm-6">
+                                             {{ form.idc_jg }}
+                                             {{ form.idc_jg.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">序列号</label>
+                                             <div class="col-sm-6">
+                                             {{ form.service_tag }}
+					     {{ form.service_tag.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">备注</label>
+                                             <div class="col-sm-6">
+                                             {{ form.remark }}
+					     {{ form.remark.errors }}
+                                              </div>
+                                         </div> 
+                                         <div class="col-sm-offset-8 col-sm-10">
+                                             {% ifequal action 'add' %}
+                                             <button type="submit" class="btn btn-primary">添加</button>
+                                             {% endifequal %}
+                                             {% ifequal action 'edit' %}
+                                             <button type="submit" class="btn btn-primary" name="operate" value="update">更新</button>
+                                             {% endifequal %}
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div> <!-- panel body -->
+                        </div> <!-- panel end -->
+                    </div> <!-- col end -->
+                </div> <!-- row end -->
+
+{% endblock %}

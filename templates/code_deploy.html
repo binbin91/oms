@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% block title %}OMS{% endblock %}
+{% block css %}
+<!-- iCheck-->
+<link rel="stylesheet" href="assets/plugins/icheck/css/_all.css">
+{% endblock %}
+{% block content %}
+       <div class="row">
+            <div class="col-md-12">
+               <!--breadcrumbs start -->
+               <ul class="breadcrumb">
+                     <li><a href="{% url 'index' %}">Dashboard</a>
+                     </li>
+                     <li>部署管理</li>
+                     <li class="active">代码发布</li>
+               </ul>
+               <!--breadcrumbs end -->
+               <h1 class="h1">代码发布</h1>
+            </div>
+       </div>
+
+       <div class="row">
+            <div class="col-md-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                             <form class="form-horizontal form-border" method="post" enctype="multipart/form-data" action="/deploy/code_deploy/?action=push">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">项目</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="project" value={{ project }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">代码url</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="url" value={{ url }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">版本号</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="version" value={{ version }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">部署环境</label>
+                                        <div class="col-sm-6">
+                                            <label class="radio-inline">
+                                                <input class="icheck" type="radio" checked="" name="env" value="beta">测试</label>
+                                            <label class="radio-inline">
+                                                <input class="icheck" type="radio" name="env" value="ga">正式</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-3 control-label">返回结果</label>
+                                          <div class="col-sm-6">
+                                               <textarea class="form-control">{{ ret }}</textarea>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                         <div class="col-sm-offset-8 col-sm-10">
+                                              <button type="submit" class="btn btn-primary">推送</button>
+                                         </div>
+                                    </div>
+                             </form>
+                      </div>
+                 </div>
+            </div>
+       </div>
+       <!--row end-->
+
+{% endblock %}

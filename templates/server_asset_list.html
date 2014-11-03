@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+{% block title %}OMS{% endblock %}
+{% block css %}
+<!-- DataTables-->
+<link rel="stylesheet" href="/static/plugins/dataTables/css/dataTables.css">
+{% endblock %}
+{% block content %}
+       <div class="row">
+            <div class="col-md-12">
+               <!--breadcrumbs start -->
+               <ul class="breadcrumb">
+                     <li><a href="{% url 'index' %}">Dashboard</a>
+                     </li>
+                     <li>资产管理</li>
+                     <li class="active">服务器资产</li>
+               </ul>
+               <!--breadcrumbs end -->
+               <h1 class="h1">软硬件资产信息</h1>
+            </div>
+       </div>
+
+       <div class="row">
+            <div class="col-md-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                           {% if all_server_list %}
+                           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                               <thead>
+                                   <tr>
+                                      <th>内网IP</th>
+                                      <th>厂商</th>
+                                      <th>产品型号</th>
+                                      <th>硬件序列号</th>
+                                      <th>CPU型号</th>
+                                      <th>CPU线程数</th>
+                                      <th>CPU物理个数</th>
+                                      <th>内存大小</th>
+                                      <th>硬盘大小</th>
+                                      <th>RAID级别</th>
+                                      <th>主机名</th>
+                                      <th>内网MAC地址</th>
+                                      <th>操作系统</th>
+                                      <th>是否虚拟机</th>
+                                      <th>所属机房</th>
+                                   </tr>
+                               </thead>
+                               
+                               <tbody>
+                               {% for each_server in all_server_list %}
+                                   <tr>
+                                      <td>{{ each_server.ip }}</td>
+                                      <td>{{ each_server.manufacturer }}</td>
+                                      <td>{{ each_server.productname }}</td>
+                                      <td>{{ each_server.service_tag }}</td>
+                                      <td>{{ each_server.cpu_model }}</td>
+                                      <td>{{ each_server.cpu_nums }}</td>
+                                      <td>{{ each_server.cpu_groups }}</td>
+                                      <td>{{ each_server.mem }}</td>
+                                      <td>{{ each_server.disk }}</td>
+                                      <td>{{ each_server.raid }}</td>
+                                      <td>{{ each_server.hostname }}</td>
+                                      <td>{{ each_server.macaddress }}</td>
+                                      <td>{{ each_server.os }}</td>
+                                      <td>{{ each_server.virtual }}</td>
+                                      <td>{{ each_server.idc_name }}</td>
+                                   </tr>
+                               {% endfor %}
+                               </tbody>
+                            </table>
+                           {% endif %}
+                            <div class="row">
+                                 <div class="col-xs-6">
+                                       <div class="dataTables_info" id="example_info" role="alert" aria-live="polite" aria-relevant="all"></div>
+                                 </div>
+                                 <div class="col-xs-6">
+                                      <div class="dataTables_paginate paging_simple_numbers" id="exmaple_paginate">
+                                           <a href="/asset/server_get/?action=flush" class="btn btn-info btn-sm" role="button">刷新</a>
+                                           {% if all_server_list.has_previous %}
+                                                <a href="?page={{ all_server_list.previous_page_number }}">上一页</a>
+                                           {% endif %}
+                                           <span class="current">
+                                                第{{ all_server_list.number }}页，共{{ all_server_list.paginator.num_pages }}页
+                                           </span> 
+                                           {% if all_server_list.has_next %}
+                                                <a href="?page={{ all_server_list.next_page_number }}">下一页</a>
+                                           {% endif %}
+                                      </div>
+                                 </div>
+                           </div> <!--row end-->
+                         </div>
+                     </div>
+                 </div>
+             </div>
+      	<!--row end-->
+
+{% endblock %}

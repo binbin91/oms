@@ -1,0 +1,62 @@
+{% extends "host_list.html" %}
+{% block content %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--breadcrumbs start -->
+                        <ul class="breadcrumb">
+                            <li><a href="{% url 'index' %}">Dashboard</a>
+                            </li>
+                            <li>资产管理</li>
+                            <li class="active">{{ page_name }}</li>
+                        </ul>
+                        <!--breadcrumbs end -->
+                        <h1 class="h1">{{ page_name }}</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal form-border" id="form" method="post" action=".">
+                                       {% csrf_token %}
+                                       <div class="form-group">
+                                             <label class="col-sm-3 control-label">IP地址</label>
+                                             <div class="col-sm-6">
+                                             {{ form.ip }}
+                                             {{ form.ip.errors }}
+                                             </div>
+                                       </div>
+                                       <div class="form-group">
+                                             <label class="col-sm-3 control-label">主机名</label>
+                                             <div class="col-sm-6">
+                                             {{ form.hostname }}
+                                             {{ form.hostname.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">MAC地址</label>
+                                             <div class="col-sm-6">
+                                             {{ form.macaddress }}
+                                             {{ form.macaddress.errors }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="col-sm-3 control-label">操作系统</label>
+                                             <div class="col-sm-6">
+                                             {{ form.system_version }}
+					     {{ form.system_version.errors }}
+                                             </div>
+                                        </div>
+                                         <div class="col-sm-offset-8 col-sm-10">
+                                             <button type="submit" class="btn btn-primary" name="operate" value="update">更新</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div> <!-- panel body -->
+                        </div> <!-- panel end -->
+                    </div> <!-- col end -->
+                </div> <!-- row end -->
+
+{% endblock %}

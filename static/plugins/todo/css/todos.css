@@ -1,0 +1,85 @@
+
+
+#todo-list {
+	margin: 10px 0;
+	padding: 0;
+	list-style: none;
+}
+#todo-list li {
+	background: #F1F2F7;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	position: relative;
+	padding: 10px;
+	margin-bottom: 5px;
+	font-size: 16px;
+	font-weight: normal;
+
+}
+#todo-list li.done label {
+	
+
+	text-decoration: line-through;
+}
+label[data='done']{
+	color: #ABADB1;
+}
+#todo-list .destroy {
+	position: absolute;
+	right: 16px;
+	top: 13px;
+	display: none;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background: url(../img/destroy.png) no-repeat;
+}
+#todo-list li:hover .destroy {
+display: block;
+}
+#todo-list .destroy:hover {
+background-position: 0 -20px;
+}
+
+input[type=checkbox]{
+	margin:0 10px;
+}
+#todo-list li.editing {
+border-bottom: none;
+margin-top: -1px;
+padding: 0;
+}
+#todo-list li.editing:last-child {
+margin-bottom: -1px;
+}
+#todo-list li.editing .edit {
+display: block;
+width: 444px;
+padding: 13px 15px 14px 20px;
+margin: 0;
+}
+#todo-list li.editing .view {
+display: none;
+}
+#todo-list li .view label {
+word-break: break-word;
+}
+#todo-list li .edit {
+display: none;
+}
+#todoapp footer {
+display: none;
+margin: 0 -20px -20px -20px;
+overflow: hidden;
+color: #555555;
+background: #f4fce8;
+border-top: 1px solid #ededed;
+padding: 0 20px;
+line-height: 37px;
+-webkit-border-radius: 0 0 5px 5px;
+-moz-border-radius: 0 0 5px 5px;
+-ms-border-radius: 0 0 5px 5px;
+-o-border-radius: 0 0 5px 5px;
+border-radius: 0 0 5px 5px;
+}

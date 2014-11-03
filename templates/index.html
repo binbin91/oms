@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fonts from Font Awsome -->
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- CSS Animate -->
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <!-- Custom styles for this theme -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    {% block css %}{% endblock %}
+    <!-- Fonts -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+    <!-- Feature detection -->
+    <script src="/static/js/modernizr-2.6.2.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    {% block container %}
+    <section id="container">
+        <header id="header">
+            <!--logo start-->
+            <div class="brand">
+                <a href="{% url 'index' %}" class="logo">
+                    <span>OMS</span></a>
+            </div>
+            <!--logo end-->
+            <div class="user-nav">
+                <ul>
+                    <li class="dropdown messages">
+                        <span class="badge badge-danager animated bounceIn" id="new-messages"></span>
+                        <button type="button" class="btn btn-default dropdown-toggle options" id="toggle-mail" data-toggle="dropdown">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </li>
+                    <li class="profile-photo">
+                        <img src="/static/img/avatar.png" alt="" class="img-circle">
+                    </li>
+                    <li class="dropdown settings">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      Mike Adams <i class="fa fa-angle-down"></i>
+                    </a>
+                        <ul class="dropdown-menu animated fadeInDown">
+                            <li>
+                                <a href="#"><i class="fa fa-user"></i> Profile</a>
+                            </li>
+                            <li>
+                                <a href="login.html"><i class="fa fa-power-off"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--sidebar left start-->
+        <aside class="sidebar">
+            <div id="leftside-navigation" class="nano">
+                <ul class="nano-content">
+                    <li class="active">
+                        <a href="{% url 'index' %}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:void(0);"><i class="fa fa-table"></i><span>装机列表</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                        <ul>
+                            <li><a href="{% url 'install_list' %}">系统安装</a>
+                            </li>
+                            <li><a href="{% url 'install_record' %}">安装记录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:void(0);"><i class="fa fa-table"></i><span>部署管理</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                        <ul>
+                            <li><a href="{% url 'key_list' %}">Salt认证</a>
+                            </li>
+                            <li><a href="{% url 'module_deploy' %}">模块部署</a>
+                            </li>
+                            <li><a href="{% url 'remote_execution' %}">远程管理</a>
+                            </li>
+                            <li><a href="{% url 'code_deploy' %}">代码发布</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:void(0);"><i class="fa fa-table"></i><span>资产管理</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                        <ul>
+                            <li><a href="{% url 'host_list' %}">主机列表</a>
+                            </li>
+                            <li><a href="{% url 'server_asset_list' %}">服务器资产</a>
+                            </li>
+                            <li><a href="{% url 'network_device_list' %}">网络设备资产</a>
+                            </li>
+                            <li><a href="{% url 'idc_asset_list' %}">数据中心资产</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:void(0);"><i class="fa fa-file"></i><span>Pages</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                        <ul>
+                            <li><a href="login.html">Login</a>
+                            </li>
+                            <li><a href="logout.html">Sign Up</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+        <!--sidebar left end-->
+        <!--main content start-->
+        <section class="main-content-wrapper">
+            <section id="main-content">
+                <!--tiles start-->
+		{% block content %}
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-tile detail tile-red">
+                            <div class="content">
+                                <h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500"></h1>
+                                <p>New Users</p>
+                            </div>
+                            <div class="icon"><i class="fa fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-tile detail tile-turquoise">
+                            <div class="content">
+                                <h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500"></h1>
+                                <p>New Comments</p>
+                            </div>
+                            <div class="icon"><i class="fa fa-comments"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-tile detail tile-blue">
+                            <div class="content">
+                                <h1 class="text-left timer" data-from="0" data-to="32" data-speed="2500"></h1>
+                                <p>New Messages</p>
+                            </div>
+                            <div class="icon"><i class="fa fa fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-tile detail tile-purple">
+                            <div class="content">
+                                <h1 class="text-left timer" data-to="105" data-speed="2500"></h1>
+                                <p>New Sales</p>
+                            </div>
+                            <div class="icon"><i class="fa fa-bar-chart-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--tiles end-->
+                <!--dashboard charts and map start-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Sales for 2014</h3>
+                                <div class="actions pull-right">
+                                    <i class="fa fa-chevron-down"></i>
+                                    <i class="fa fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="sales-chart" style="height: 250px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Office locations</h3>
+                                <div class="actions pull-right">
+                                    <i class="fa fa-chevron-down"></i>
+                                    <i class="fa fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="map" id="map" style="height: 250px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		{% endblock %}
+                <!--dashboard charts and map end-->
+            </section>
+        </section>
+        <!--main content end-->
+    </section>
+    {% endblock %}
+    <!--Global JS-->
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/waypoints/waypoints.min.js"></script>
+    <script src="/static/js/application.js"></script>
+    <script src="/static/plugins/nanoScroller/jquery.nanoscroller.min.js"></script>
+    <!--Page Level JS-->
+    <script src="/static/plugins/countTo/jquery.countTo.js"></script>
+    <script src="/static/plugins/weather/js/skycons.js"></script>
+    <!-- FlotCharts  -->
+    <script src="/static/plugins/flot/js/jquery.flot.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.resize.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.canvas.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.image.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.categories.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.crosshair.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.errorbars.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.fillbetween.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.navigate.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.pie.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.selection.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.stack.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.symbol.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.threshold.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.colorhelpers.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.time.min.js"></script>
+    <script src="/static/plugins/flot/js/jquery.flot.example.js"></script>
+    <!-- Morris  -->
+    <script src="/static/plugins/morris/js/morris.min.js"></script>
+    <script src="/static/plugins/morris/js/raphael.2.1.0.min.js"></script>
+    <!-- Vector Map  -->
+    <script src="/static/plugins/jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/static/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- ToDo List  -->
+    <script src="/static/plugins/todo/js/todos.js"></script>
+    <!--Load these page level functions-->
+    <script>
+    $(document).ready(function() {
+        app.timer();
+        app.map();
+        app.weather();
+        app.morrisPie();
+    });
+    </script>   
+
+</body>
+
+</html>

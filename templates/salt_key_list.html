@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% block title %}OMS{% endblock %}
+{% block css %}
+<!-- DataTables-->
+<link rel="stylesheet" href="/static/plugins/dataTables/css/dataTables.css">
+{% endblock %}
+{% block content %}
+       <div class="row">
+            <div class="col-md-12">
+               <!--breadcrumbs start -->
+               <ul class="breadcrumb">
+                     <li><a href="{% url 'index' %}">Dashboard</a>
+                     </li>
+                     <li>部署管理</li>
+                     <li class="active">Salt认证</li>
+               </ul>
+               <!--breadcrumbs end -->
+               <h1 class="h1">Key管理</h1>
+            </div>
+       </div>
+
+       <div class="row">
+            <div class="col-md-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                               <tbody>
+                                   <td class="info">所有salt-key列表</td>
+                               </tbody>
+                           </table>
+                           <h3 class="h3">未允许的key</h3>
+                           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                               <tbody>
+                               {% for each_pre in all_minions_pre %}
+                                   <td>{{ each_pre }}</td>
+                                   <td width="180"><a href="/deploy/key_accept/?node_name={{ each_pre }}" style="color:CornflowerBlue;font-weight:bold">允许</a></td>
+                               {% endfor %}
+                               </tbody>
+                           </table>
+                           <h3 class="h3">已管理的key</h3>
+                           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                               <tbody>
+                               {% for each_minion in all_minions %}
+                                  <tr>
+                                   <td>{{ each_minion }}</td>
+                                   <td width="180"><a href="/deploy/key_delete/?node_name={{ each_minion }}" style="color:CornflowerBlue;font-weight:bold">删除</a></td> 
+                                  </tr>
+                               {% endfor %}
+                               </tbody>
+                           </table>
+                           <div class="row">
+                                 <div class="col-xs-6">
+                                       <div class="dataTables_info" id="example_info" role="alert" aria-live="polite" aria-relevant="all"></div>
+                                 </div>
+                                 <div class="col-xs-6">
+                                      <div class="dataTables_paginate paging_simple_numbers" id="exmaple_paginate">
+                                      </div>
+                                 </div>
+                           </div> <!--row end-->
+                         </div>
+                     </div>
+                 </div>
+             </div>
+      	<!--row end-->
+
+{% endblock %}
