@@ -11,14 +11,6 @@ OMS运维管理平台
 
   redhat.binbin@gmail.com   //欢迎来件~,TKS ALL~
 
-组件要求：
-1.Django1.6.X
-2.Cobbler
-3.Saltstack 2014.1.X（只要能实现saltapi.py里list_all_ky函数即可，开发环境为2014.1.4）
-4.Salt API 0.8.4.1
-5.MySQL-python、MySQL
-6.salt_event_to_mysql.py（事件捕捉程序）
-
 功能简介：
 installed App: 系统安装、安装记录
 deploy App: Salt Key管理、模块部署、远程管理、代码发布

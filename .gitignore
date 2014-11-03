@@ -2,6 +2,9 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+*.py[co]
+*.swp
+*.DS_Store
 
 # Package Files #
 *.jar
